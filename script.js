@@ -22,7 +22,7 @@ var clientSecret = "vB5iAAB0Q8RzO2A2gcEmO3XgSCpSoKWzzxRrzwjMDLARCtrlLHtnRDtPA6ww
 // all of the information that the Yelp API needs to generate our token. This includes our app ID and 
 // secret, as well as the grant type, which for now will always be "client_credentials"
 $.ajax({
-  url: "https://api.yelp.com/oauth2/token",
+  url: "http://anyorigin.com/get?url=api.yelp.com/oauth2/token",
   method: "POST",
   data: {
     client_id: clientId,
