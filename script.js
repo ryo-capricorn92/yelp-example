@@ -7,6 +7,9 @@
 
 // Declare a variable to keep the current Yelp API token in.
 var accessToken;
+// Declare variables to hold app ID and secret 
+var clientId = "7Sqtf458Ber5Fm2zUJDISw";
+var clientSecret = "vB5iAAB0Q8RzO2A2gcEmO3XgSCpSoKWzzxRrzwjMDLARCtrlLHtnRDtPA6ww5wth";
 
 // Make our initial post request to Yelp to receive our session token.
 // This token will be used throughout our app to make various calls to the API.
@@ -22,10 +25,11 @@ $.ajax({
   url: "https://api.yelp.com/oauth2/token",
   method: "POST",
   data: {
-    client_id: "",
-    client_secret: "",
+    client_id: clientId,
+    client_secret: clientSecret,
     grant_type: "client_credentials"
-  }
+  },
+  dataType: "application/x-www-form-urlencoded"
 }).done(function (response) {
   // set the global "accessToken" variable to the token that the ajax call returns
   accessToken = response.data.access_token;
@@ -36,16 +40,17 @@ $.ajax({
 // For this example, I'll keep the variable declarations clustered with their use cases, but keep in
 // mind that you should be declaring all variables at the top of their respective scopes, wherever 
 // possible.
-var searchTerm = "deli";
-var latitude = "37.786882";
-var longitude = "-122.399972";
-$.ajax({
-  url: "https://api.yelp.com/v3/businesses/search?term=" + searchTerm + "&latitude=" + latitude + 
-    "&longitude=" + longitude,
-  method: "GET"
-}).done(function (response) {
-  console.log(response.data);
-});
+// var searchTerm = "deli";
+// var latitude = "37.786882";
+// var longitude = "-122.399972";
+// $.ajax({
+//   url: "https://api.yelp.com/v3/businesses/search?term=" + searchTerm + "&latitude=" + latitude + 
+//     "&longitude=" + longitude,
+//   method: "GET",
+//   dataType: "jsonp"
+// }).done(function (response) {
+//   console.log(response.data);
+// });
 
 // The one problem that you may run into when working with this API, is that this API does not 
 // allow null host CORS requests. So you will not be able to make requests without making 
